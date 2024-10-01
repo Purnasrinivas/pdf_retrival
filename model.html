@@ -1,37 +1,36 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot with File Upload</title>
-  <link rel="stylesheet" href="model.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/model.css">
+    <title>Chat Interface</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Chatbot with File Upload</h1>
-
-    <!-- File Upload Section -->
-    <form id="uploadForm" action="http://localhost:5000/upload" method="POST" enctype="multipart/form-data">
-      <div class="file-upload">
-        <label for="fileInput">Upload files:</label>
-        <input type="file" id="fileInput" name="files" multiple>
-        <button type="submit" class="upload-btn">Upload Files</button>
+    <div class="chat-container">
+        <div class="chat-header">
+            Chat Buddy
+        </div>
         
-      </div>
-    </form>
-
-    <!-- Question Section (appears after file upload) -->
-    <form id="questionForm" action="http://localhost:5000/upload" method="POST">
-      <div class="question-section">
-        <label for="questionInput">Ask a question:</label>
-        <input type="text" id="questionInput" name="query" placeholder="Ask a question..." disabled>
-        <button type="submit" class="ask-btn" disabled>Start Conversation</button>
-      </div>
-    </form>
-
-    <!-- Chat Display Section -->
-    <div id="chatbox" class="chatbox"></div>
-  </div>
+        <div class="share-container">
+            <button id="share-btn">Share Conversation</button>
+        </div>
+        
+        <div id="messages" class="scroll-area"></div>
+        
+        <div class="input-area">
+            <input type="text" id="input" placeholder="Type your message..." />
+            <button id="upload-btn" onclick="document.getElementById('fileInput').click()">Upload</button>
+            <input type="file" id="fileInput" style="display: none;" multiple onchange="handleFileChange(event)" />
+            <button id="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+        
+        <div class="conversation-container">
+            <button id="conversation-btn">View Conversation</button>
+        </div>
+    </div>
   
+    <script src="static/model.js"></script>
 </body>
 </html>
